@@ -17,7 +17,7 @@ const App = () => {
           options={{ 
             title:appTitle ,
             headerStyle: {
-              backgroundColor: 'grey'
+              backgroundColor: 'black'
             },
             headerTitleStyle: {
             color: 'pink',
