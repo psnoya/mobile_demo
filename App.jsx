@@ -20,7 +20,7 @@ const App = () => {
               backgroundColor: 'grey'
             },
             headerTitleStyle: {
-            color: 'white',
+            color: 'pink',
             fontSize: 25
             }
           }}

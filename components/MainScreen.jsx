@@ -1,24 +1,32 @@
-import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { useSelector } from 'react-redux'
+import React, { useEffect } from "react";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import { useSelector } from "react-redux";
+import Articles from "../modules/Articles";
+import { StatusBar } from 'expo-status-bar'
+import ArticleIndexDetails from './ArticleIndexDetails'
 
-
-
-const MainScreen = () => {
-  const { appTitle } = useSelector(state => state)
-  return (
-    <View style={styles.container}>
-      <Text>{appTitle}</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ebc1c4",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
+
+const MainScreen = () => {
+  const { articles } = useSelector((state) => state);
+  useEffect(() => {
+  Articles.index()}
+  , []);
+  return (
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <FlatList
+        data={articles}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({item}) => <ArticleIndexDetails article={item}/>}
+      />
+    </View>
+  );
+};
+
 export default MainScreen;
